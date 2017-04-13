@@ -13,17 +13,23 @@ public class ControladorSIAPJTest {
 		proc.setId(1244);
 		proc.setEmail("fulano@provedor.com");
 		proc.setTelefone("(12)12345-6789");
-		proc.setNomeReclamante("Marcella");
+		proc.setNomeReclamante("abcsd asdw toerwi adasdi");
 		proc.setContent("A conta de luz ta um absurrrdo!");
 	}
 	@Test
-	public void testValidId() {
+	public void testValidProc() {
 		assertTrue(control.initProcesso(proc));
 	}
 	
 	@Test
 	public void testInvalidId() {
 		proc.setId(-345);
+		assertFalse(control.initProcesso(proc));
+	}
+	
+	@Test
+	public void testInvalidName(){
+		proc.setNomeReclamante("A23N34z asdw fas");
 		assertFalse(control.initProcesso(proc));
 	}
 
