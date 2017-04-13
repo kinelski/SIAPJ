@@ -38,5 +38,12 @@ public class ControladorSIAPJTest {
 		proc.setTelefone("1223-76384");
 		assertFalse(control.initProcesso(proc));
 	}
+	@Test
+	public void testEmail(){
+		proc.setEmail("fulano_432@mil.eb.br");
+		assertTrue(control.initProcesso(proc));
+		proc.setEmail("fulano@provedor@xcd.com");
+		assertFalse(control.initProcesso(proc));
+	}
 
 }
