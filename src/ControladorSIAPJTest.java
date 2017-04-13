@@ -32,5 +32,11 @@ public class ControladorSIAPJTest {
 		proc.setNomeReclamante("A23N34z asdw fas");
 		assertFalse(control.initProcesso(proc));
 	}
+	
+	@Test
+	public void testInvalidTelephone(){
+		proc.setTelefone("1223-76384");
+		assertFalse(control.initProcesso(proc));
+	}
 
 }
