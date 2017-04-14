@@ -76,9 +76,11 @@ public class DefaultSender implements ServiceMail{
 		return this.password;
 	}
 	
+	/*
 	@Override
 	public boolean sendMail(String address){
 		//Apenas retorna true;
 		return true;
 	}
+	*/
 }
