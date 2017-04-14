@@ -2,7 +2,6 @@
 public class ControladorSIAPJ{
 	private ValidadorProcesso validator = new ValidadorProcesso();
 	
-	
 	public boolean initProcesso(Processo proc){
 		if(!checkProcesso(proc))
 			return false;
