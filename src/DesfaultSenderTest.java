@@ -1,33 +1,39 @@
 import static org.junit.Assert.*;
+
+import org.junit.Before;
 import org.junit.Test;
 
-public class EmailGmailTest {
-
+public class DesfaultSenderTest {
+	ServiceMail SM;
+	
+	@Before
+	public void setUp(){
+		SM = new DefaultSender();
+	}
+	
 	@Test
 	public void testdefineContent() {
-		ServiceMail SM;
-		SM = new EmailGmail();
 		assertEquals("Teste", SM.defineContent("Teste"));
 	}
 	
 	@Test
 	public void testdefineSubject(){
-		ServiceMail SM;
-		SM = new EmailGmail();
 		assertEquals("Teste", SM.defineSubject("Teste"));
 	}
 
 	@Test
 	public void testdefineSender(){
-		ServiceMail SM;
-		SM = new EmailGmail();
 		assertEquals("Teste", SM.defineSender("Teste"));
 	}
 	
 	@Test
 	public void testdefinePassword(){
-		ServiceMail SM;
-		SM = new EmailGmail();
 		assertEquals("Teste", SM.definePassword("Teste"));
 	}
+	
+	/*
+	@Test
+	public void testSendMail(){
+		assertEquals(True, SM.sendMail("Endereco"));
+	}*/
 }
