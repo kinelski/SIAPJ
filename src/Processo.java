@@ -1,3 +1,5 @@
+package src;
+
 
 
 public class Processo {
@@ -7,6 +9,18 @@ public class Processo {
 	private String Email;
 	private String Content;
 	
+        public Processo(){
+        }
+        
+        public Processo(int id,String NomeReclamante,String Telefone,String Email,
+                String Content){
+            this.id = id;
+            this.NomeReclamante = NomeReclamante;
+            this.Telefone = Telefone;
+            this.Email = Email;
+            this.Content = Content;
+        }
+        
 	public String getNomeReclamante() {
 		return NomeReclamante;
 	}

@@ -1,3 +1,5 @@
+package src;
+
 import java.util.Properties;
 
 import javax.mail.Address;
@@ -31,19 +33,19 @@ public class DefaultSender implements ServiceMail{
 	               return new PasswordAuthentication(sender, password);
 	         }
 	    });
-	    /** Ativa Debug para sessão */
+	    /** Ativa Debug para sessao */
 	    session.setDebug(true);
 	    try {
 	
 	          Message message = new MimeMessage(session);
 	          message.setFrom(new InternetAddress(sender)); //Remetente
 	
-	          Address[] toUser = InternetAddress //Destinatário(s)
+	          Address[] toUser = InternetAddress //Destinatario(s)
 	                     .parse(address);  
 	          message.setRecipients(Message.RecipientType.TO, toUser);
 	          message.setSubject(subject);//Assunto
 	          message.setText(content);
-	          /**Método para enviar a mensagem criada*/
+	          /**Metodo para enviar a mensagem criada*/
 	          Transport.send(message);
 	          return true;
 	         } catch (MessagingException e) {

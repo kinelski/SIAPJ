@@ -1,5 +1,7 @@
+package src;
 
-public interface RespositorioProcessos {
+
+public interface IRespositorioProcessos {
 	boolean addProcesso(Processo processo);
 	Processo getProcesso(int id);
 }
