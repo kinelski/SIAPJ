@@ -1,3 +1,5 @@
+package src;
+
 
 public class ValidadorProcesso implements ValidadorProcessoInterface{
 	
@@ -9,7 +11,7 @@ public class ValidadorProcesso implements ValidadorProcessoInterface{
 		//id deve ser uma string contendo apenas numeros
 		if(!id.matches("[0-9]+"))
 			return false;
-		//nome deve conter apenas letras e espaços
+		//nome deve conter apenas letras e espacos
 		if(!nome.matches("[a-zA-Z ]+"))
 			return false;
 		//Telefone deve ser da forma (xx)xxxxx-xxxx
@@ -17,7 +19,7 @@ public class ValidadorProcesso implements ValidadorProcessoInterface{
 			return false;
 		if(!email.matches("[a-z0-9-_]+@[a-z0-9]+([.][a-z]+)+"))
 			return false;
-		//Assume-se que a reclamação pode ser uma string qualquer
+		//Assume-se que a reclamacao pode ser uma string qualquer
 		return true;
 	}
 
