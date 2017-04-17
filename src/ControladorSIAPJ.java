@@ -34,36 +34,36 @@ public class ControladorSIAPJ{
 	}
 	
 	private void sendInfoByLetter(Processo proc, boolean statusProcesso){
-		DefaultSender mail = new DefaultSender();
+		EmailSender mail = new EmailSender();
 		
 		if (statusProcesso)
 		{
 			mail.defineContent(proc.getContent());
 			mail.defineSender("default_sender");
-			mail.sendMail("Juiz");
+			mail.send("Juiz");
 		}
 		else
 		{
 			mail.defineContent("Erro");
 			mail.defineSender("default_sender");
-			mail.sendMail(proc.getNomeReclamante());
+			mail.send(proc.getNomeReclamante());
 		}
 	}
 	
 	private void sendInfoByEmail(Processo proc, boolean statusProcesso){
-		DefaultSender mail = new DefaultSender();
+		MailSender mail = new MailSender();
 		
 		if (statusProcesso)
 		{
 			mail.defineContent(proc.getContent());
 			mail.defineSender("default_sender");
-			mail.sendEmail("juiz@ita.com");
+			mail.send("juiz@ita.com");
 		}
 		else
 		{
 			mail.defineContent("Erro");
 			mail.defineSender("default_sender");
-			mail.sendEmail(proc.getEmail());
+			mail.send(proc.getEmail());
 		}
 	}
 }

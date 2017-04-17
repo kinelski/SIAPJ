@@ -8,7 +8,7 @@ public class DesfaultSenderTest {
 	
 	@Before
 	public void setUp(){
-		SM = new DefaultSender();
+		SM = new EmailSender();
 	}
 	
 	@Test
