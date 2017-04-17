@@ -1,6 +1,7 @@
 
 public class ControladorSIAPJ{
 	private ValidadorProcesso validator = new ValidadorProcesso();
+	private MailFactory factory = new MailFactory();
 	
 	public boolean initProcesso(Processo proc){
 		return initProcesso(proc, false);
@@ -9,17 +10,17 @@ public class ControladorSIAPJ{
 	public boolean initProcesso(Processo proc, boolean useLetter)
 	{
 		if(!checkProcesso(proc)){
-			sendInfoByEmail(proc, false);
+			sendInfo(proc, false, "email");
 			if (useLetter){
-				sendInfoByLetter(proc, false);
+				sendInfo(proc, false, "letter");
 			}
 			return false;
 		}
 		
 		persistProcesso(proc);
-		sendInfoByEmail(proc, true);
+		sendInfo(proc, true, "email");
 		if (useLetter){
-			sendInfoByLetter(proc, true);
+			sendInfo(proc, true, "letter");
 		}
 		
 		return true;
@@ -33,8 +34,8 @@ public class ControladorSIAPJ{
 		return proc;
 	}
 	
-	private void sendInfoByLetter(Processo proc, boolean statusProcesso){
-		EmailSender mail = new EmailSender();
+	private void sendInfo(Processo proc, boolean statusProcesso, String channel){
+		ServiceMail mail = factory.getServiceMail(channel);
 		
 		if (statusProcesso)
 		{
@@ -47,23 +48,6 @@ public class ControladorSIAPJ{
 			mail.defineContent("Erro");
 			mail.defineSender("default_sender");
 			mail.send(proc.getNomeReclamante());
-		}
-	}
-	
-	private void sendInfoByEmail(Processo proc, boolean statusProcesso){
-		MailSender mail = new MailSender();
-		
-		if (statusProcesso)
-		{
-			mail.defineContent(proc.getContent());
-			mail.defineSender("default_sender");
-			mail.send("juiz@ita.com");
-		}
-		else
-		{
-			mail.defineContent("Erro");
-			mail.defineSender("default_sender");
-			mail.send(proc.getEmail());
 		}
 	}
 }
